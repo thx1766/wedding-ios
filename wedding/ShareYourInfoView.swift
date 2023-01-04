@@ -3,7 +3,7 @@ import SwiftUI
 struct ShareYourInfoView: View {
     @State var fname: String = ""
     @State var lname: String = ""
-    @State var emailAddress: String = ""
+    @State var emailAddress: String = UserAuth.shared.submitting_email
     @State var notes: String = ""
     
     var body: some View {
@@ -27,7 +27,7 @@ struct ShareYourInfoView: View {
                     if(fname != "" && lname != "" && emailAddress != ""){
                         if(validEmail(input: emailAddress)){
                             print("Submit email action")
-                            UserAuth.shared.submitted()
+                            UserAuth.shared.addEmailToServer(f: fname, l: lname, e: emailAddress, n: notes)
                         }
                         else{
                             print("bad email address")
@@ -35,8 +35,6 @@ struct ShareYourInfoView: View {
                     }else{
                         print("missing form data")
                     }
-                    
-                    //UserAuth.shared.logInOrOff(passCode: password)
                 }) {
                     Text("Click to Submit")
                 }
