@@ -1,17 +1,41 @@
-//
-//  weddingApp.swift
-//  wedding
-//
-//  Created by Nate M1 on 1/3/23.
-//
-
 import SwiftUI
 
 @main
 struct weddingApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AuthView()
         }
+    }
+}
+
+struct AuthView: View {
+    
+    @StateObject private var userAuth = UserAuth.shared
+
+    var body: some View {
+        TabView{
+            DetailsView()
+                .tabItem{
+                    Image(systemName: "party.popper" )
+                }
+            PhotoView()
+                .tabItem{
+                    Image(systemName: "photo")
+                }
+            Engagement_Ring_View()
+                .tabItem{
+                    Image(systemName: "sparkle")
+                }
+            Wedding_Ring_View()
+                .tabItem{
+                    Image(systemName: "sparkles")
+                }
+            SettingsView()
+                .tabItem{
+                    Image(systemName: "gear")
+                }
+        }
+        .requiresAuthentication()
     }
 }
