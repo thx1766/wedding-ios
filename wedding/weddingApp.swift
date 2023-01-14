@@ -9,6 +9,8 @@ struct weddingApp: App {
     }
 }
 
+// it's working it looks like
+
 struct AuthView: View {
     
     @StateObject private var userAuth = UserAuth.shared
