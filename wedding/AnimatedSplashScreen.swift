@@ -77,7 +77,7 @@ struct AnimatedSplashScreen<Content: View>: View {
                   Image("SplashImage")
                     .matchedGeometryEffect(id: "SPLASHICON", in: animation)
             }
-        }
+        }.background(Color(0xFFE2A8))
         .onAppear {
             if !startAnimation{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.15){
@@ -94,3 +94,14 @@ struct AnimatedSplashScreen<Content: View>: View {
     }
 }
 
+extension Color {
+  init(_ hex: UInt, alpha: Double = 1) {
+    self.init(
+      .sRGB,
+      red: Double((hex >> 16) & 0xFF) / 255,
+      green: Double((hex >> 8) & 0xFF) / 255,
+      blue: Double(hex & 0xFF) / 255,
+      opacity: alpha
+    )
+  }
+}
