@@ -9,7 +9,7 @@ struct weddingApp: App {
     }
 }
 
-// it's working it looks like
+// it's working it looks like..
 
 struct AuthView: View {
     
